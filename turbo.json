@@ -1,14 +1,13 @@
 {
-  "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
-    },
-    "lint": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "config": {
+        "installCommand": "yarn set version berry && yarn plugin import workspace-tools && yarn config set nodeLinker node-modules && yarn install"
+      }
     }
-  }
+  ]
 }
